@@ -1,18 +1,34 @@
-import { useEffect } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { Redirect } from 'expo-router';
-import { supabase } from '@/lib/supabase';
+import { APP_CONFIG } from '@/constants/config';
+import { Colors, FontSize } from '@/constants/theme';
+import { useAppStore } from '@/stores/appStore';
+import { useAuthStore } from '@/stores/authStore';
 
 export default function Index() {
-useEffect(() => {
-  const test = async () => {
-    const { data, error } = await supabase
-      .from('posts')
-      .select('id, title, post_type, visibility')
-      .eq('visibility', 'public');
-    console.log('posts:', data, error);
-  };
-  test();
-}, []);
+  const { hasCompletedOnboarding, hasHydrated } = useAppStore();
+  const { session, initialized } = useAuthStore();
 
-  return <Redirect href="/onboarding/welcome" />;
+  if (!hasHydrated || !initialized) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: Colors.background,
+          gap: 14,
+        }}
+      >
+        <ActivityIndicator color={Colors.primary} />
+        <Text style={{ color: Colors.foreground, fontSize: FontSize.md, fontWeight: '600' }}>
+          {APP_CONFIG.name}
+        </Text>
+      </View>
+    );
+  }
+
+  if (session) return <Redirect href="/(app)" />;
+  if (!hasCompletedOnboarding) return <Redirect href="/onboarding" />;
+  return <Redirect href="/auth/login" />;
 }

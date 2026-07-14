@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, ActivityIndicator, ViewStyle } from 'react-native';
+import { TouchableOpacity, Text, ActivityIndicator, type StyleProp, type ViewStyle } from 'react-native';
 import { Colors, FontFamily, FontSize, BorderRadius } from '@/constants/theme';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline';
@@ -9,7 +9,8 @@ type ButtonProps = {
   variant?: ButtonVariant;
   loading?: boolean;
   disabled?: boolean;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
+  accessibilityLabel?: string;
 };
 
 const styles: Record<ButtonVariant, { bg: string; border: string; text: string }> = {
@@ -37,6 +38,7 @@ export default function Button({
   loading = false,
   disabled = false,
   style,
+  accessibilityLabel,
 }: ButtonProps) {
   const s = styles[variant];
   const isDisabled = disabled || loading;
@@ -46,6 +48,9 @@ export default function Button({
       onPress={onPress}
       disabled={isDisabled}
       activeOpacity={0.85}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel ?? label}
+      accessibilityState={{ disabled: isDisabled, busy: loading }}
       style={[
         {
           backgroundColor: s.bg,

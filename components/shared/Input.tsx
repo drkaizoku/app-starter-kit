@@ -44,6 +44,7 @@ export default function Input({
       }}>
         <TextInput
           {...props}
+          accessibilityLabel={props.accessibilityLabel ?? label}
           secureTextEntry={hidden}
           onFocus={(e) => { setFocused(true); props.onFocus?.(e); }}
           onBlur={(e) => { setFocused(false); props.onBlur?.(e); }}
@@ -59,7 +60,12 @@ export default function Input({
 
         {/* Password toggle */}
         {secureTextEntry && (
-          <TouchableOpacity onPress={() => setHidden(!hidden)} activeOpacity={0.7}>
+          <TouchableOpacity
+            onPress={() => setHidden(!hidden)}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel={hidden ? 'Show password' : 'Hide password'}
+          >
             <Text style={{ fontSize: 16, color: Colors.mutedForeground }}>
               {hidden ? '👁' : '🙈'}
             </Text>

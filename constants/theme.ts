@@ -6,30 +6,30 @@
 
 export const Colors = {
   // --- Core Brand ---
-  primary: '#2D4A3E',
-  primaryLight: 'rgba(45,74,62,0.05)',
-  primaryBorder: 'rgba(45,74,62,0.4)',
-  primaryMuted: 'rgba(45,74,62,0.2)',
-  primaryForeground: '#FAF9F5',
+  primary: '#2563EB',
+  primaryLight: '#EFF6FF',
+  primaryBorder: '#93C5FD',
+  primaryMuted: '#BFDBFE',
+  primaryForeground: '#FFFFFF',
 
   // --- Backgrounds ---
-  background: '#FAF8F5',
-  backgroundOverlay: 'rgba(250,248,245,0.95)',
-  backgroundBlur: 'rgba(250,248,245,0.8)',
+  background: '#F8FAFC',
+  backgroundOverlay: 'rgba(248,250,252,0.95)',
+  backgroundBlur: 'rgba(248,250,252,0.8)',
 
   // --- Surfaces ---
   card: '#FFFFFF',
 
   // --- Foreground / Text ---
-  foreground: '#1A2E26',
-  mutedForeground: '#6B7D6F',
+  foreground: '#0F172A',
+  mutedForeground: '#64748B',
 
   // --- Secondary ---
-  secondary: '#EDF1EB',
+  secondary: '#E2E8F0',
 
   // --- Borders ---
-  border: '#DDE3DA',
-  borderMuted: 'rgba(221,227,218,0.6)',
+  border: '#CBD5E1',
+  borderMuted: 'rgba(203,213,225,0.6)',
 
   // --- Status ---
   success: '#22C55E',
@@ -37,18 +37,14 @@ export const Colors = {
   danger: '#EF4444',
   info: '#38BDF8',
 
-  // --- Badge / Difficulty ---
-  badgeEasy: '#22C55E',
-  badgeModerate: '#F59E0B',
-  badgeHard: '#EF4444',
 } as const;
 
 export const FontFamily = {
-  heading: 'Lora_700Bold',
-  subheading: 'Lora_600SemiBold',
-  body: 'DMSans_400Regular',
-  caption: 'DMSans_300Light',
-  label: 'DMSans_500Medium',
+  heading: undefined,
+  subheading: undefined,
+  body: undefined,
+  caption: undefined,
+  label: undefined,
 } as const;
 
 export const FontSize = {
@@ -80,35 +76,24 @@ export const BorderRadius = {
 
 export const Shadow = {
   card: {
-    shadowColor: '#1A2E26',
+    shadowColor: '#0F172A',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 8,
     elevation: 3,
   },
   cta: {
-    shadowColor: '#2D4A3E',
+    shadowColor: '#2563EB',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.25,
     shadowRadius: 40,
     elevation: 8,
   },
   modal: {
-    shadowColor: '#1A2E26',
+    shadowColor: '#0F172A',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.12,
     shadowRadius: 16,
     elevation: 8,
   },
-} as const;
-
-export const Gradient = {
-  // Welcome screen hero overlay
-  heroOverlay: [
-    'transparent',
-    'rgba(26,46,38,0.15)',
-    'rgba(26,46,38,0.85)',
-  ],
-  // Personalise screen image fade
-  imageFade: ['transparent', Colors.background],
 } as const;
